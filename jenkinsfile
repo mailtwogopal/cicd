@@ -8,7 +8,7 @@ pipeline{
         stage('Build image'){
             steps{
                 //sh "cd /home/admin/projcert/projCert"
-                sh "sudo docker build -f /var/lib/jenkins/workspace/mycicd/projCert/Dockerfile . -t ${image_Name}"
+                sh "sudo docker build . -t ${image_Name}"
             }
         }
         stage('Deploy and Run app'){
