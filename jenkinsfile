@@ -1,0 +1,25 @@
+pipeline{
+    agent any
+    environment {
+        image_Name = 'myapp'
+        container_Name = 'webapp'
+    }
+    stages{
+        stage('Build image'){
+            steps{
+                //sh "cd /home/admin/projcert/projCert"
+                sh "sudo docker build -f /var/lib/jenkins/workspace/mycicd/projCert/Dockerfile . -t ${image_Name}"
+            }
+        }
+        stage('Deploy and Run app'){
+            steps{
+            sh "docker run -d -p 80:80 ${image_Name} --name=${container_Name}"
+        }
+        }
+        stage('Test'){
+            steps{
+            sh "java -jar Appautomation.jar"
+            }
+        }
+    }
+}
