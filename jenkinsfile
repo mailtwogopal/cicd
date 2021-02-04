@@ -13,7 +13,7 @@ pipeline{
         }
         stage('Deploy and Run app'){
             steps{
-            sh "docker run -d --privileged=true ${image_Name} --name=${container_Name}"
+            sh "docker run -d  --name ${container_Name} ${image_Name} "
             //above step was giving permission error so added cmd: sudo usermod -aG docker jenkins
         }
         }
