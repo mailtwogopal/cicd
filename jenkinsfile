@@ -13,7 +13,7 @@ pipeline{
         }
         stage('Deploy and Run app'){
             steps{
-            sh "docker run -d -p 8080:8080 ${image_Name} --name=${container_Name}"
+            sh "docker run -d ${image_Name} --name=${container_Name}"
         }
         }
         stage('Test'){
