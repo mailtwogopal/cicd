@@ -15,11 +15,13 @@ pipeline{
             steps{
             sh "docker run -d  --name ${container_Name} -p 5050:5050 ${image_Name} "
             //above step was giving permission error so added cmd: sudo usermod -aG docker jenkins
+            //above command is to allow jenkins to run docker run command
         }
         }
         stage('Test'){
             steps{
             sh "java -jar Appautomation.jar"
+            //this step has a dependency of chromedriver to be installed on the machine this jenkins job
             }
         }
     }
