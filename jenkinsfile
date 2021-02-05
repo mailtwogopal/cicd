@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment {
         image_Name = 'myapp'
-        container_Name = 'webappcicd'
+        container_Name = 'appcicd'
     }
     stages{
         stage('Build image'){
