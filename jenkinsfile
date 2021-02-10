@@ -5,6 +5,11 @@ pipeline{
         container_Name = 'appcicd'
     }
     stages{
+        stage('Cleanup Container'){
+            steps{
+                sh "docker rm ${image_Name}"
+            }
+        }
         stage('Build image'){
             steps{
                 //sh "cd /home/admin/projcert/projCert"
