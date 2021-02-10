@@ -26,7 +26,8 @@ pipeline{
         stage('Test'){
             steps{
             sh "java -jar Appautomation.jar"
-            //this step has a dependency of chromedriver to be installed on the machine this jenkins job
+            //this step has a dependency of chromedriver to be installed on the machine 
+            //where this jenkins job is running
             }
         }
     }
