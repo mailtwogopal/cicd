@@ -7,6 +7,7 @@ pipeline{
     stages{
         stage('Cleanup Container'){
             steps{
+                sh "docker stop ${container_Name}"
                 sh "docker rm ${container_Name}"
             }
         }
