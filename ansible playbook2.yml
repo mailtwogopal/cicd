@@ -1,0 +1,19 @@
+---
+- hosts: testserver
+  become: true
+  vars:
+    ansible_become_pass: edureka
+  tasks:
+  - name: Ensure unzip is installed
+    package:
+      name: unzip
+    retries: 5
+    until: r is success
+    register: r
+  - name: install chromedriver when absent or current version is not desired version
+    unarchive:
+      src: "https://chromedriver.storage.googleapis.com/85.0.4183.87/chromedriver_linux64.zip"
+      dest: /usr/local/bin
+      copy: no
+      mode: 0755
+    become: true
